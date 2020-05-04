@@ -1,0 +1,61 @@
+.container{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    background-color:  #E4E4E4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-login{
+    width: 916px;
+    height: 607px;
+
+
+    background: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    width: 458px;
+    height: 607px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.signup {
+    width: 458px;
+    height: 607px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.signup form {
+    display: flex;
+    flex-direction: column;
+}
+
+h3{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #606060;
+    padding-bottom: 10px;
+    align-self: flex-start;
+}

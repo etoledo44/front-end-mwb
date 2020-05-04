@@ -1,0 +1,31 @@
+.back{
+    margin: 10px;
+    display: flex;
+    align-content: space-between !important;
+}
+.back button {
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+.card-content form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-content img {
+    margin: 10px;
+    width: 400px;
+}
