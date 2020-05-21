@@ -1,14 +1,12 @@
 import React, { useState} from 'react'
 import api from '../../services/api'
-import Button from '../components/button'
-import Input from '../components/input'
-import Container from '../components/container'
+import {Container, Input, Button} from '../styles/index'
 import {toast} from 'react-toastify'
 import '../global.css'
 import './styles.css'
 import manwithbeardlogo from '../../assets/img/manwithbeardlogo.png'
 import { useHistory } from 'react-router-dom'
-
+import {useAuth} from '../../contexts/auth'
 
 
 export default function Login(){
@@ -24,6 +22,9 @@ export default function Login(){
 
   /** Use history para navegar o usuario */
   const history = useHistory()
+
+  //hook auth
+  const {logIn} = useAuth()
 
   async function handleSignup(e){
     e.preventDefault()
@@ -49,27 +50,21 @@ export default function Login(){
   async function handleSignin(e){
     e.preventDefault()
 
+    
     const User = {
       email: emailLogin,
       password: passwordLogin
     }
-
-    try {
-      const response = await api.post('/login', User)
-      createSession(response)
+    const response = await logIn(User)
+    if (response.status == 200){
       notify('success', 'Redirecionando...', 1000)
       setEmailLogin('')
       setPasswordLogin('')
-    } catch (error) {
-      notify('error', error)
+      // history.push('/')
+    }else{
+      notify('error', 'Senha ou email errado')
     }
   } 
-
-  async function createSession (infos){
-    localStorage.setItem('tkn', JSON.stringify(infos.data))
-    history.push('/')
-  }
-
   const notify = (status, text, duration = 5000) => {
     switch (status) {
       case 'success':

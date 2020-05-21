@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, useRouteMatch } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import api from '../../services/api'
-import Container from '../components/container'
-import Input from '../components/input'
-import Button from '../components/button'
-import Card from '../components/card'
+import {Container, Input, Card, Button} from '../styles/index'
 import example from '../../assets/img/example.png';
 import {FaChevronLeft, FaTrash} from 'react-icons/fa'
 import '../global.css'
@@ -72,23 +69,30 @@ export default function Detail() {
     }
 
     function handleDelete(){
-        let userInfo = JSON.parse(user)
+        const confirmDelete = window.confirm('Você deseja mesmo deletar?')
 
-        api.post(`/barber/delete/${barbershop}`, userInfo.user_id, {
-            headers: {Authorization: userInfo.token}
-        }).then(({data})=>{
-            toast.info(data.message,
-                {
-                    position: toast.POSITION.TOP_RIGHT,
-                    autoClose: 1500
-                })
-        }).catch(error=>{
-            toast.error(error.message,
-                {
-                    position: toast.POSITION.TOP_RIGHT,
-                    autoClose: 1500
-                })
-        })
+        if(confirmDelete){
+            let userInfo = JSON.parse(user)
+            let {id_user, token} = userInfo
+            api.post(`/barber/delete/${barbershop}`, {id_user}, {
+                headers: {Authorization: token}
+            }).then(({data})=>{
+                toast.info(data.message,
+                    {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 1500
+                    })
+                history.push('/')
+            }).catch(error=>{
+                toast.error(error.message,
+                    {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 1500
+                    })
+            })
+        }else {
+            return false
+        }
     }
   return (
       <Container>
@@ -100,8 +104,8 @@ export default function Detail() {
                     </button>
                 </div>
                 <div>
-                    <button >
-                        <FaTrash onClick={()=>{handleDelete()}} size={24} color="red"  />
+                    <button onClick={()=>{handleDelete()}} >
+                        <FaTrash size={24} color="red"  />
                     </button>
                 </div>
             </div>

@@ -11,3 +11,14 @@ body {
     font-family:  Roboto, sans-serif;
     background-color: #E4E4E4;
 }
+
+h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 23px;
+    color: #606060;
+    margin-top: 15px;
+    padding: 15px;
+    align-self: center;
+}
