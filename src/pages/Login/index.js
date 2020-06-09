@@ -60,7 +60,7 @@ export default function Login(){
       notify('success', 'Redirecionando...', 1000)
       setEmailLogin('')
       setPasswordLogin('')
-      // history.push('/')
+      history.push('/')
     }else{
       notify('error', 'Senha ou email errado')
     }

@@ -8,9 +8,11 @@ import '../global.css'
 import './styles.css'
 import {toast} from 'react-toastify'
 
+import {useAuth} from '../../contexts/auth'
+
 // import { Container } from './styles';
 
-export default function Detail() {
+export default function BarbershopDetail() {
     const {barbershop} = useParams()
     const history = useHistory()
 
@@ -21,7 +23,7 @@ export default function Detail() {
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
 
-    const user = localStorage.getItem('tkn')
+    const {token, user} = useAuth()
 
     useEffect(()=>{
         api.get(`/barber/show/${barbershop}`).then(({data})=>{
@@ -36,7 +38,6 @@ export default function Detail() {
 
     function handleSubmit(e){
         e.preventDefault()
-        let userInfo = JSON.parse(user)
         const barberInfo = {
             name,
             cep,
@@ -44,13 +45,13 @@ export default function Detail() {
             number,
             city,
             state,
-            id_user: userInfo.id_user
+            id_user: user.id_user
         }
         console.log(barbershop)
 
         api.post(`/barber/update/${barbershop}`, barberInfo, 
         {
-            headers: {Authorization: userInfo.token}
+            headers: {Authorization: token}
         }).then(({data})=>{
             toast.success(data.message,
             {

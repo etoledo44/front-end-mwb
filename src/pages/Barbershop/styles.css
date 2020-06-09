@@ -1,20 +1,17 @@
-
-h1{
-    font-style: normal;
-    font-size: 30px;
-    line-height: 23px;
-    color: #606060;
-    margin-top: 15px;
-    padding: 15px;
-    align-self: center;
-}
-
 .card-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     
+}
+
+.header button {
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
 }
 
 .card-barbershop{
@@ -35,21 +32,4 @@ h1{
 .card-barbershop .photo img {
     width: 345px;
     height: 220px;
-}
-.name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    
-    width: auto;
-    height: 60px;
-}
-.name button{
-    cursor: pointer;
-    border-style: none;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import {FaChevronRight} from 'react-icons/fa'
-import imgExample from '../../assets/img/example.png'
+import imgExample from '../assets/img/example.png'
 import { useHistory } from 'react-router-dom';
 
-import '../Home/styles.css'
+import '../pages/Barbershop/styles.css'
 
 
 
@@ -19,7 +19,7 @@ export default function CardBarber({barbers}) {
                 </div>
                 <div className="name">
                 <p>{items.name}</p>
-                <button  onClick={()=>history.push(`detail/${items.id}`)}>
+                <button  onClick={()=>history.push(`/user/barbershop/${items.name}/${items.id}`)}>
                     <FaChevronRight size={20}/>  
                 </button>
                 </div>

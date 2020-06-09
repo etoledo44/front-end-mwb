@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('@mwb:token')
         setUser(null)
         setToken(null)
-        history.push('login')
+        history.push('/')
     }
 
 

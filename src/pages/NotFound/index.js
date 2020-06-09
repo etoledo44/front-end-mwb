@@ -7,7 +7,7 @@ const NotFound = () => {
     const history = useHistory()
     return(
         <Container>
-            <Card justifyContent={'center'}>
+            <Card justifyContent={'center'} className="card">
                 <h1 className="lost">404</h1>
                 <h1>Pô irmão, se perdeu do caminho?</h1>
                 <button onClick={()=>history.goBack()}>Volta ai </button>
